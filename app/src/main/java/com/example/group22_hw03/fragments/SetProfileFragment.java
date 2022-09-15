@@ -5,19 +5,29 @@
  */
 package com.example.group22_hw03.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.group22_hw03.Profile;
 import com.example.group22_hw03.R;
 
 public class SetProfileFragment extends Fragment {
-    public SetProfileFragment() {
 
+    EditText weightWidget;
+    RadioGroup genderGroup;
+
+    public SetProfileFragment() {
   }
 
     @Override
@@ -31,24 +41,98 @@ public class SetProfileFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        weightWidget = view.findViewById(R.id.weightWidget);
+        genderGroup = view.findViewById(R.id.genderGroup);
+
+        view.findViewById(R.id.buttonCancel).setOnClickListener(v -> listener.cancelButtonClicked());
+
+        view.findViewById(R.id.buttonWeightSet).setOnClickListener(v -> {
+            if (!validateWeight()) {
+                Toast.makeText(getActivity(), getString(R.string.validation_weight), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!validateGender()) {
+                Toast.makeText(getActivity(), getString(R.string.validation_gender), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String value = weightWidget.getText().toString();
+            int userWeight = Integer.parseInt(value);
+
+            String gender;
+
+            int genderChoice = genderGroup.getCheckedRadioButtonId();
+
+            // select gender
+            if (genderChoice == R.id.genderFemale) {
+                gender = getString(R.string.gender_group_female);
+            } else if (genderChoice == R.id.genderMale) {
+                gender = getString(R.string.gender_group_male);
+            } else {
+                throw new IllegalStateException(getString(R.string.exception_illegal_state_gender));
+            }
+
+            Profile profile = new Profile(userWeight, gender);
+
+            listener.profileSet(profile);
+        });
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
         if (context instanceof iListener){
-            listener = (iListener)context;
+            listener = (iListener) context;
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
+        }
+    }
+
+    /**
+     * Validate the following rules:
+     *
+     * 1. The gender is either male or female.
+     *
+     * @return boolean
+     */
+    @SuppressLint("NonConstantResourceId")
+    private boolean validateGender() {
+        switch (genderGroup.getCheckedRadioButtonId()) {
+            case R.id.genderFemale:
+            case R.id.genderMale:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Validate the following rules:
+     *
+     * 1. The number entered is valid.
+     * 2. The number entered is greater than 0.
+     *
+     * @return boolean
+     */
+    private boolean validateWeight() {
+        try {
+            int weight = Integer.parseInt(weightWidget.getText().toString());
+            return weight > 0;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
     iListener listener;
 
     public interface iListener{
+        void cancelButtonClicked();
 
+        void profileSet(Profile profile);
     }
 }

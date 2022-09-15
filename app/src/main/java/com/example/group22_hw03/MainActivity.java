@@ -6,17 +6,20 @@
 package com.example.group22_hw03;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-
 import com.example.group22_hw03.fragments.AddDrinkFragment;
 import com.example.group22_hw03.fragments.BACCalculatorFragment;
 import com.example.group22_hw03.fragments.SetProfileFragment;
 import com.example.group22_hw03.fragments.ViewDrinksFragment;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements BACCalculatorFragment.iListener, AddDrinkFragment.iListener, SetProfileFragment.iListener, ViewDrinksFragment.iListener {
-    Drink drink;
     Profile profile;
+
+    public ArrayList<Drink> drinkArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +32,59 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
                 .commit();
     }
 
+// from BACCalculatorFragment
+    @Override
+    public void resetButtonClicked() {
+        BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
+
+        if (fragment != null) {
+            profile = null;
+            drinkArrayList.clear();
+            fragment.resetCalculator();
+        }
+    }
+
+    @Override
+    public void setButtonClicked() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerView, new SetProfileFragment(), "set profile")
+                .addToBackStack("set profile")
+                .commit();
+    }
+
+    @Override
+    public void addDrinkButtonClicked() {
+
+    }
+
+    @Override
+    public void viewDrinksButtonClicked() {
+
+    }
+
+// from SetProfileFragment
+
+    @Override
+    public void cancelButtonClicked() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void profileSet(Profile profile) {
+        /* This is returning null... */
+        BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
+
+        getSupportFragmentManager()
+                .popBackStack("set profile", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        if (fragment != null) {
+            fragment.setWeight(profile);
+        }
+    }
+
+// from AddDrinkFragment
+
+
+// from ViewDrinksFragment
 
 }
