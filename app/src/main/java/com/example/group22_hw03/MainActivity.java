@@ -18,17 +18,15 @@ import com.example.group22_hw03.fragments.ViewDrinksFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements BACCalculatorFragment.iListener, AddDrinkFragment.iListener, SetProfileFragment.iListener, ViewDrinksFragment.iListener {
-    Profile profile;
-
     private ArrayList<Drink> drinks;
+    private Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
+        getSupportFragmentManager().beginTransaction()                .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
                 .commit();
 
         drinks = new ArrayList<>();
