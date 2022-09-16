@@ -45,7 +45,9 @@ public class AddDrinkFragment extends Fragment {
 
     iListener listener;
 
-    public interface iListener{
+    public interface iListener {
+        void addDrinkButtonSetClicked();
 
+        void addDrinkButtonCancelClicked();
     }
 }
