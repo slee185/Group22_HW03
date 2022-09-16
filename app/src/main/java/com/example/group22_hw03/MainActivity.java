@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     @Override
     public void bacCalculatorButtonAddDrinkClicked() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerView, new AddDrinkFragment(), "add drink")
+                .addToBackStack("add drink")
+                .commit();
 
     }
 
