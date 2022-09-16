@@ -15,6 +15,7 @@ import com.example.group22_hw03.fragments.BACCalculatorFragment;
 import com.example.group22_hw03.fragments.SetProfileFragment;
 import com.example.group22_hw03.fragments.ViewDrinksFragment;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements BACCalculatorFragment.iListener, AddDrinkFragment.iListener, SetProfileFragment.iListener, ViewDrinksFragment.iListener {
@@ -61,8 +62,11 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     }
 
     @Override
-    public void bacCalculatorButtonViewDrinksClicked() {
-
+    public void bacCalculatorButtonViewDrinksClicked(ArrayList<Drink> drinks) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerView, new ViewDrinksFragment(), "view drinks")
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
@@ -99,5 +103,25 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
             this.profile = profile;
             fragment.setWeight(profile);
         }
+    }
+
+    @Override
+    public void viewDrinksButtonTrashClicked() {
+
+    }
+
+    @Override
+    public void viewDrinksButtonCloseClicked() {
+
+    }
+
+    @Override
+    public void viewDrinksButtonPreviousClicked() {
+
+    }
+
+    @Override
+    public void viewDrinksButtonNextClicked() {
+
     }
 }

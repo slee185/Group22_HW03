@@ -70,7 +70,7 @@ public class BACCalculatorFragment extends Fragment {
         buttonDrinkAdd.setEnabled(false);
 
         buttonDrinkAdd.setOnClickListener(v -> listener.bacCalculatorButtonAddDrinkClicked());
-        buttonDrinkView.setOnClickListener(v -> listener.bacCalculatorButtonViewDrinksClicked());
+        buttonDrinkView.setOnClickListener(v -> listener.bacCalculatorButtonViewDrinksClicked(drinks));
         buttonReset.setOnClickListener(v -> listener.bacCalculatorButtonResetClicked());
         buttonSetWeight.setOnClickListener(v -> listener.bacCalculatorButtonSetClicked());
 
@@ -169,6 +169,6 @@ public class BACCalculatorFragment extends Fragment {
 
         void bacCalculatorButtonAddDrinkClicked();
 
-        void bacCalculatorButtonViewDrinksClicked();
+        void bacCalculatorButtonViewDrinksClicked(ArrayList<Drink> drinks);
     }
 }

@@ -60,10 +60,13 @@ public class ViewDrinksFragment extends Fragment {
 
         // ArrayList<Drink> drinks =
 
-        view.findViewById(R.id.viewDrinksButtonTrash).setOnClickListener(v -> {
+        view.findViewById(R.id.viewDrinksButtonTrash).setOnClickListener(v -> listener.viewDrinksButtonTrashClicked());
 
-        });
+        view.findViewById(R.id.viewDrinksButtonClose).setOnClickListener(v -> listener.viewDrinksButtonCloseClicked());
 
+        view.findViewById(R.id.viewDrinksButtonPrevious).setOnClickListener(v -> listener.viewDrinksButtonPreviousClicked());
+
+        view.findViewById(R.id.viewDrinksButtonNext).setOnClickListener(v -> listener.viewDrinksButtonNextClicked());
     }
 
     @Override
@@ -80,6 +83,12 @@ public class ViewDrinksFragment extends Fragment {
     iListener listener;
 
     public interface iListener{
+        void viewDrinksButtonTrashClicked();
 
+        void viewDrinksButtonCloseClicked();
+
+        void viewDrinksButtonPreviousClicked();
+
+        void viewDrinksButtonNextClicked();
     }
 }
