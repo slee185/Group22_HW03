@@ -5,15 +5,10 @@
  */
 package com.example.group22_hw03;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.View;
 
 import com.example.group22_hw03.fragments.AddDrinkFragment;
 import com.example.group22_hw03.fragments.BACCalculatorFragment;
