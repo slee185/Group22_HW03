@@ -20,7 +20,10 @@ import androidx.fragment.app.Fragment;
 import com.example.group22_hw03.Profile;
 import com.example.group22_hw03.R;
 
+import java.util.ArrayList;
+
 public class BACCalculatorFragment extends Fragment {
+
     TextView bacLevelView;
     TextView numDrinksView;
     TextView statusView;
@@ -31,6 +34,15 @@ public class BACCalculatorFragment extends Fragment {
     Button buttonReset;
 
     Profile profile;
+
+    public BACCalculatorFragment() {
+
+  }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

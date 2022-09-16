@@ -23,12 +23,21 @@ import com.example.group22_hw03.Profile;
 import com.example.group22_hw03.R;
 
 public class SetProfileFragment extends Fragment {
+
     EditText weightWidget;
     RadioGroup genderGroup;
 
+    public SetProfileFragment() {
+  }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_baccalculator, container, false);
+        return inflater.inflate(R.layout.fragment_setprofile, container, false);
     }
 
     @Override

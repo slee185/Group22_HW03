@@ -17,6 +17,25 @@ import androidx.fragment.app.Fragment;
 import com.example.group22_hw03.R;
 
 public class ViewDrinksFragment extends Fragment {
+    public ViewDrinksFragment() {
+
+  }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_viewdrinks, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -26,11 +45,6 @@ public class ViewDrinksFragment extends Fragment {
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_baccalculator, container, false);
     }
 
     iListener listener;
