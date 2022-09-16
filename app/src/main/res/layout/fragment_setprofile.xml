@@ -7,39 +7,39 @@
     tools:context=".fragments.SetProfileFragment">
 
     <Button
-        android:id="@+id/buttonWeightSet"
+        android:id="@+id/setProfileButtonSet"
         android:layout_width="165dp"
         android:layout_height="47dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/set_weight_button_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genderGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/setProfileGenderGroup" />
 
     <Button
-        android:id="@+id/buttonCancel"
+        android:id="@+id/setProfileButtonCancel"
         android:layout_width="165dp"
         android:layout_height="47dp"
         android:layout_marginStart="16dp"
         android:text="@string/cancel_button_label"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonWeightSet"
-        app:layout_constraintEnd_toStartOf="@+id/buttonWeightSet"
+        app:layout_constraintBottom_toBottomOf="@+id/setProfileButtonSet"
+        app:layout_constraintEnd_toStartOf="@+id/setProfileButtonSet"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonWeightSet" />
+        app:layout_constraintTop_toTopOf="@+id/setProfileButtonSet" />
 
     <TextView
-        android:id="@+id/weightLabel"
+        android:id="@+id/setProfileWeightLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/weight_label"
-        app:layout_constraintBottom_toBottomOf="@+id/weightWidget"
+        app:layout_constraintBottom_toBottomOf="@+id/setProfileWeightWidget"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weightWidget" />
+        app:layout_constraintTop_toTopOf="@+id/setProfileWeightWidget" />
 
     <EditText
-        android:id="@+id/weightWidget"
+        android:id="@+id/setProfileWeightWidget"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,21 +51,21 @@
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/weightLabel"
+        app:layout_constraintStart_toEndOf="@+id/setProfileWeightLabel"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/genderLabel"
+        android:id="@+id/setProfileGenderLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gender_group_label"
-        app:layout_constraintBottom_toBottomOf="@+id/genderGroup"
-        app:layout_constraintEnd_toEndOf="@+id/weightLabel"
-        app:layout_constraintTop_toTopOf="@+id/genderGroup" />
+        app:layout_constraintBottom_toBottomOf="@+id/setProfileGenderGroup"
+        app:layout_constraintEnd_toEndOf="@+id/setProfileWeightLabel"
+        app:layout_constraintTop_toTopOf="@+id/setProfileGenderGroup" />
 
     <RadioGroup
-        android:id="@+id/genderGroup"
+        android:id="@+id/setProfileGenderGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -73,18 +73,18 @@
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/genderLabel"
-        app:layout_constraintTop_toBottomOf="@+id/weightWidget">
+        app:layout_constraintStart_toEndOf="@+id/setProfileGenderLabel"
+        app:layout_constraintTop_toBottomOf="@+id/setProfileWeightWidget">
 
         <RadioButton
-            android:id="@+id/genderFemale"
+            android:id="@+id/setProfileGenderFemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/gender_group_female" />
 
         <RadioButton
-            android:id="@+id/genderMale"
+            android:id="@+id/setProfileGenderMale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
