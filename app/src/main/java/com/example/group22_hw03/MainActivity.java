@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()                .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
                 .commit();
 
         drinks = new ArrayList<>();
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     @Override
     public void bacCalculatorButtonSetClicked() {
-        getSupportFragmentManager().beginTransaction()                .replace(R.id.containerView, new SetProfileFragment(), "set profile")
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerView, new SetProfileFragment(), "set profile")
                 .addToBackStack("set profile")
                 .commit();
     }
