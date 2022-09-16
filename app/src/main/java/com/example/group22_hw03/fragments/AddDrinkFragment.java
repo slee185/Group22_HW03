@@ -36,8 +36,8 @@ public class AddDrinkFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        if (context instanceof iListener){
-            listener = (iListener)context;
+        if (context instanceof iListener) {
+            listener = (iListener) context;
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
         }

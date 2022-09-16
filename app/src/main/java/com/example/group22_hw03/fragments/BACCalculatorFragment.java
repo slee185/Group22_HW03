@@ -20,8 +20,6 @@ import androidx.fragment.app.Fragment;
 import com.example.group22_hw03.Profile;
 import com.example.group22_hw03.R;
 
-import java.util.ArrayList;
-
 public class BACCalculatorFragment extends Fragment {
     private TextView bacLevelView;
     private TextView numDrinksView;

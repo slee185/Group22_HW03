@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
                 .commit();
     }
 
-// from BACCalculatorFragment
+    // from BACCalculatorFragment
     @Override
     public void bacCalculatorButtonResetClicked() {
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");

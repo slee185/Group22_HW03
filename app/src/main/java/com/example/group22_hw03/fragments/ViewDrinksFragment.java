@@ -17,10 +17,6 @@ import androidx.fragment.app.Fragment;
 import com.example.group22_hw03.R;
 
 public class ViewDrinksFragment extends Fragment {
-    public ViewDrinksFragment() {
-
-  }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
