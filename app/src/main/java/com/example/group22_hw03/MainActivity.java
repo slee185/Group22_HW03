@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements BACCalculatorFragment.iListener, AddDrinkFragment.iListener, SetProfileFragment.iListener, ViewDrinksFragment.iListener {
     Profile profile;
 
-    public ArrayList<Drink> drinkArrayList = new ArrayList<>();
+    private ArrayList<Drink> drinks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
                 .commit();
+
+        drinks = new ArrayList<>();
     }
 
     @Override
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
         if (fragment != null) {
             profile = null;
-            drinkArrayList.clear();
+            drinks.clear();
             fragment.resetCalculator();
         }
     }
