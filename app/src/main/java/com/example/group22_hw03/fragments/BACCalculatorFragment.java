@@ -68,6 +68,8 @@ public class BACCalculatorFragment extends Fragment {
 
         if (profile != null) {
             weightView.setText(getString(R.string.weight_view_label_label, profile.weight, profile.gender));
+            buttonDrinkView.setEnabled(true);
+            buttonDrinkAdd.setEnabled(true);
         }
     }
 
