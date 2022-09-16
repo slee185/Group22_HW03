@@ -48,6 +48,7 @@ public class BACCalculatorFragment extends Fragment {
         buttonDrinkAdd.setOnClickListener(v -> listener.addDrinkButtonClicked());
         buttonDrinkView.setOnClickListener(v -> listener.viewDrinksButtonClicked());
 
+        buttonReset.performClick();
     }
 
     @Override
