@@ -27,9 +27,6 @@ public class SetProfileFragment extends Fragment {
     EditText weightWidget;
     RadioGroup genderGroup;
 
-    public SetProfileFragment() {
-  }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

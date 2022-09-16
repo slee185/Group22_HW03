@@ -35,10 +35,6 @@ public class BACCalculatorFragment extends Fragment {
 
     Profile profile;
 
-    public BACCalculatorFragment() {
-
-  }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
