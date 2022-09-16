@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.group22_hw03.Drink;
 import com.example.group22_hw03.R;
 
 public class AddDrinkFragment extends Fragment {
@@ -31,7 +34,25 @@ public class AddDrinkFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        RadioGroup addDrinkSizeGroup = view.findViewById(R.id.addDrinkSizeGroup);
+        SeekBar addDrinkAlcoholPercentBar = view.findViewById(R.id.addDrinkAlcoholPercentBar);
+
         view.findViewById(R.id.addDrinkButtonCancel).setOnClickListener(v -> listener.addDrinkButtonCancelClicked());
+        view.findViewById(R.id.addDrinkButtonSet).setOnClickListener(v -> {
+            double size;
+
+            if (addDrinkSizeGroup.getCheckedRadioButtonId() == R.id.addDrinkSizeOptionSmall) {
+                size = Drink.SIZE_SMALL;
+            } else if (addDrinkSizeGroup.getCheckedRadioButtonId() == R.id.addDrinkSizeOptionMedium) {
+                size = Drink.SIZE_MEDIUM;
+            } else if (addDrinkSizeGroup.getCheckedRadioButtonId() == R.id.addDrinkSizeOptionLarge) {
+                size = Drink.SIZE_LARGE;
+            } else {
+                throw new IllegalStateException("Invalid drink size selected");
+            }
+
+            listener.addDrinkButtonSetClicked(new Drink(size, addDrinkAlcoholPercentBar.getProgress()));
+        });
     }
 
     @Override
@@ -48,7 +69,7 @@ public class AddDrinkFragment extends Fragment {
     iListener listener;
 
     public interface iListener {
-        void addDrinkButtonSetClicked();
+        void addDrinkButtonSetClicked(Drink drink);
 
         void addDrinkButtonCancelClicked();
     }

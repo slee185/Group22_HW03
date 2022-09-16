@@ -60,19 +60,28 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
                 .commit();
     }
 
-    public void addDrinkButtonSetClicked() {
-
-    }
-
-    public void addDrinkButtonCancelClicked() {
-        getSupportFragmentManager().popBackStack();
-    }
-
     @Override
     public void bacCalculatorButtonViewDrinksClicked() {
 
     }
 
+    @Override
+    public void addDrinkButtonSetClicked(Drink drink) {
+        BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
+
+        getSupportFragmentManager()
+                .popBackStack("add drink", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        if (fragment != null) {
+            drinks.add(drink);
+            fragment.updateDrinks(drinks, profile);
+        }
+    }
+
+    @Override
+    public void addDrinkButtonCancelClicked() {
+        getSupportFragmentManager().popBackStack();
+    }
 
     @Override
     public void setProfileButtonCancelClicked() {

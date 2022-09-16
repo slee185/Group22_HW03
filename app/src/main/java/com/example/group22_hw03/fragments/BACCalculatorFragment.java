@@ -113,6 +113,11 @@ public class BACCalculatorFragment extends Fragment {
         this.profile = profile;
     }
 
+    public void updateDrinks(ArrayList<Drink> drinks, Profile profile) {
+        this.drinks = drinks;
+        this.profile = profile;
+    }
+
     iListener listener;
 
     public interface iListener {
