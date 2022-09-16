@@ -82,7 +82,7 @@ public class BACCalculatorFragment extends Fragment {
     }
 
     public void setWeight(Profile profile) {
-        weightView.setText(getString(R.string.weight_view_label_label, profile.weight, profile.gender));
+        this.profile = profile;
     }
 
     iListener listener;
