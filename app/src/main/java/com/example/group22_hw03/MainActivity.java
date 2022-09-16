@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
         setContentView(R.layout.activity_main);
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.containerView, new BACCalculatorFragment())
+                .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
                 .addToBackStack(null)
                 .commit();
     }
