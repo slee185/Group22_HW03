@@ -23,15 +23,14 @@ import com.example.group22_hw03.R;
 import java.util.ArrayList;
 
 public class BACCalculatorFragment extends Fragment {
-
-    TextView bacLevelView;
-    TextView numDrinksView;
-    TextView statusView;
-    TextView weightView;
-    Button buttonDrinkAdd;
-    Button buttonDrinkView;
-    Button buttonSetWeight;
-    Button buttonReset;
+    private TextView bacLevelView;
+    private TextView numDrinksView;
+    private TextView statusView;
+    private TextView weightView;
+    private Button buttonDrinkAdd;
+    private Button buttonDrinkView;
+    private Button buttonSetWeight;
+    private Button buttonReset;
 
     Profile profile;
 
