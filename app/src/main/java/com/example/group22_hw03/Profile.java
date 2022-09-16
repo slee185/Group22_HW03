@@ -8,7 +8,7 @@ package com.example.group22_hw03;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
 
@@ -41,7 +41,7 @@ public class Profile implements Parcelable {
         }
     };
 
-    public double getGenderConstant(AppCompatActivity app) {
+    public double getGenderConstant(Fragment app) {
         if (Objects.equals(app.getString(R.string.gender_group_female), gender)) {
             return BAC_GENDER_FEMALE;
         } else if (Objects.equals(app.getString(R.string.gender_group_male), gender)) {
