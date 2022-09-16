@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
                 .commit();
     }
 
-    // from BACCalculatorFragment
     @Override
     public void bacCalculatorButtonResetClicked() {
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
@@ -51,8 +50,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     @Override
     public void bacCalculatorButtonSetClicked() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.containerView, new SetProfileFragment(), "set profile")
+        getSupportFragmentManager().beginTransaction()                .replace(R.id.containerView, new SetProfileFragment(), "set profile")
                 .addToBackStack("set profile")
                 .commit();
     }
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     }
 
-// from SetProfileFragment
 
     @Override
     public void setProfileButtonCancelClicked() {
@@ -87,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     @Override
     public void profileSet(Profile profile) {
-        /* This is returning null... */
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
 
         getSupportFragmentManager()
@@ -97,10 +93,4 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
             fragment.setWeight(profile);
         }
     }
-
-// from AddDrinkFragment
-
-
-// from ViewDrinksFragment
-
 }
