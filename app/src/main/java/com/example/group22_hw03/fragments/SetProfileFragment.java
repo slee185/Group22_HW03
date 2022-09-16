@@ -86,7 +86,7 @@ public class SetProfileFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        if (context instanceof iListener){
+        if (context instanceof iListener) {
             listener = (iListener) context;
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
@@ -95,7 +95,7 @@ public class SetProfileFragment extends Fragment {
 
     /**
      * Validate the following rules:
-     *
+     * <p>
      * 1. The gender is either male or female.
      *
      * @return boolean
@@ -113,7 +113,7 @@ public class SetProfileFragment extends Fragment {
 
     /**
      * Validate the following rules:
-     *
+     * <p>
      * 1. The number entered is valid.
      * 2. The number entered is greater than 0.
      *
@@ -130,7 +130,7 @@ public class SetProfileFragment extends Fragment {
 
     iListener listener;
 
-    public interface iListener{
+    public interface iListener {
         void cancelButtonClicked();
 
         void profileSet(Profile profile);
