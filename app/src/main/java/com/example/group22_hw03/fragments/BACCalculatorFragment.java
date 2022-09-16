@@ -43,13 +43,10 @@ public class BACCalculatorFragment extends Fragment {
         buttonReset = view.findViewById(R.id.buttonReset);
         weightView = view.findViewById(R.id.weightView);
 
-        view.findViewById(R.id.buttonReset).setOnClickListener(v -> listener.resetButtonClicked());
-
-        view.findViewById(R.id.buttonSetWeight).setOnClickListener(v -> listener.setButtonClicked());
-
-        view.findViewById(R.id.buttonDrinkAdd).setOnClickListener(v -> listener.addDrinkButtonClicked());
-
-        view.findViewById(R.id.buttonDrinkView).setOnClickListener(v -> listener.viewDrinksButtonClicked());
+        buttonReset.setOnClickListener(v -> listener.resetButtonClicked());
+        buttonSetWeight.setOnClickListener(v -> listener.setButtonClicked());
+        buttonDrinkAdd.setOnClickListener(v -> listener.addDrinkButtonClicked());
+        buttonDrinkView.setOnClickListener(v -> listener.viewDrinksButtonClicked());
 
     }
 
@@ -57,8 +54,8 @@ public class BACCalculatorFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        if (context instanceof iListener){
-            listener = (iListener)context;
+        if (context instanceof iListener) {
+            listener = (iListener) context;
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
         }
@@ -87,7 +84,7 @@ public class BACCalculatorFragment extends Fragment {
 
     iListener listener;
 
-    public interface iListener{
+    public interface iListener {
         void resetButtonClicked();
 
         void setButtonClicked();
