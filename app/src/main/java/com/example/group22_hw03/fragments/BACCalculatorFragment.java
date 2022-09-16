@@ -102,12 +102,12 @@ public class BACCalculatorFragment extends Fragment {
     iListener listener;
 
     public interface iListener {
-        void resetButtonClicked();
+        void bacCalculatorButtonResetClicked();
 
-        void setButtonClicked();
+        void bacCalculatorButtonSetClicked();
 
-        void addDrinkButtonClicked();
+        void bacCalculatorButtonAddDrinkClicked();
 
-        void viewDrinksButtonClicked();
+        void bacCalculatorButtonViewDrinksClicked();
     }
 }

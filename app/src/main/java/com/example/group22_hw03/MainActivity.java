@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
 // from BACCalculatorFragment
     @Override
-    public void resetButtonClicked() {
+    public void bacCalculatorButtonResetClicked() {
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
 
         if (fragment != null) {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     }
 
     @Override
-    public void setButtonClicked() {
+    public void bacCalculatorButtonSetClicked() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerView, new SetProfileFragment(), "set profile")
                 .addToBackStack("set profile")
@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     }
 
     @Override
-    public void addDrinkButtonClicked() {
+    public void bacCalculatorButtonAddDrinkClicked() {
 
     }
 
     @Override
-    public void viewDrinksButtonClicked() {
+    public void bacCalculatorButtonViewDrinksClicked() {
 
     }
 
