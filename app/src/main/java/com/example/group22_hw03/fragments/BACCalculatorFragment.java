@@ -17,27 +17,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.group22_hw03.Drink;
 import com.example.group22_hw03.Profile;
 import com.example.group22_hw03.R;
 
 import java.util.ArrayList;
 
 public class BACCalculatorFragment extends Fragment {
+    private TextView bacLevelView;
+    private TextView numDrinksView;
+    private TextView statusView;
+    private TextView weightView;
+    private Button buttonDrinkAdd;
+    private Button buttonDrinkView;
+    private Button buttonSetWeight;
+    private Button buttonReset;
 
-    TextView bacLevelView;
-    TextView numDrinksView;
-    TextView statusView;
-    TextView weightView;
-    Button buttonDrinkAdd;
-    Button buttonDrinkView;
-    Button buttonSetWeight;
-    Button buttonReset;
-
+    ArrayList<Drink> drinks = new ArrayList<>();
     Profile profile;
-
-    public BACCalculatorFragment() {
-
-  }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,21 +50,33 @@ public class BACCalculatorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        bacLevelView = view.findViewById(R.id.bacLevelView);
-        numDrinksView = view.findViewById(R.id.numDrinksView);
-        statusView = view.findViewById(R.id.statusView);
-        buttonDrinkAdd = view.findViewById(R.id.buttonDrinkAdd);
-        buttonDrinkView = view.findViewById(R.id.buttonDrinkView);
-        buttonSetWeight = view.findViewById(R.id.buttonSetWeight);
-        buttonReset = view.findViewById(R.id.buttonReset);
-        weightView = view.findViewById(R.id.weightView);
+        bacLevelView = view.findViewById(R.id.bacCalculatorBacLevelView);
+        buttonDrinkAdd = view.findViewById(R.id.bacCalculatorButtonAddDrink);
+        buttonDrinkView = view.findViewById(R.id.bacCalculatorButtonViewDrinks);
+        buttonReset = view.findViewById(R.id.bacCalculatorButtonReset);
+        buttonSetWeight = view.findViewById(R.id.bacCalculatorButtonSet);
+        numDrinksView = view.findViewById(R.id.bacCalculatorNumDrinksView);
+        statusView = view.findViewById(R.id.bacCalculatorStatusView);
+        weightView = view.findViewById(R.id.bacCalculatorWeightView);
 
-        buttonReset.setOnClickListener(v -> listener.resetButtonClicked());
-        buttonSetWeight.setOnClickListener(v -> listener.setButtonClicked());
-        buttonDrinkAdd.setOnClickListener(v -> listener.addDrinkButtonClicked());
-        buttonDrinkView.setOnClickListener(v -> listener.viewDrinksButtonClicked());
+        buttonDrinkAdd.setOnClickListener(v -> listener.bacCalculatorButtonAddDrinkClicked());
+        buttonDrinkView.setOnClickListener(v -> listener.bacCalculatorButtonViewDrinksClicked());
+        buttonReset.setOnClickListener(v -> listener.bacCalculatorButtonResetClicked());
+        buttonSetWeight.setOnClickListener(v -> listener.bacCalculatorButtonSetClicked());
 
-        buttonReset.performClick();
+        double bac = 0.0;
+        double totalLiquidOunces = 0.0;
+
+        for (Drink drink : drinks) {
+            totalLiquidOunces += drink.drinkSize * drink.drinkAlcoholPercent / 100;
+        }
+
+        if (profile != null) {
+            bac = (totalLiquidOunces * 5.14 / (profile.weight * profile.getGenderConstant(this)));
+        }
+
+        numDrinksView.setText(getString(R.string.num_drinks_view, drinks.size()));
+        bacLevelView.setText(getString(R.string.bac_level_view, bac));
     }
 
     @Override
@@ -104,15 +113,20 @@ public class BACCalculatorFragment extends Fragment {
         this.profile = profile;
     }
 
+    public void updateDrinks(ArrayList<Drink> drinks, Profile profile) {
+        this.drinks = drinks;
+        this.profile = profile;
+    }
+
     iListener listener;
 
     public interface iListener {
-        void resetButtonClicked();
+        void bacCalculatorButtonResetClicked();
 
-        void setButtonClicked();
+        void bacCalculatorButtonSetClicked();
 
-        void addDrinkButtonClicked();
+        void bacCalculatorButtonAddDrinkClicked();
 
-        void viewDrinksButtonClicked();
+        void bacCalculatorButtonViewDrinksClicked();
     }
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+
 import com.example.group22_hw03.fragments.AddDrinkFragment;
 import com.example.group22_hw03.fragments.BACCalculatorFragment;
 import com.example.group22_hw03.fragments.SetProfileFragment;
@@ -17,9 +18,8 @@ import com.example.group22_hw03.fragments.ViewDrinksFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements BACCalculatorFragment.iListener, AddDrinkFragment.iListener, SetProfileFragment.iListener, ViewDrinksFragment.iListener {
-    Profile profile;
-
-    public ArrayList<Drink> drinkArrayList = new ArrayList<>();
+    private ArrayList<Drink> drinks;
+    private Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,24 +28,24 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
-                .addToBackStack(null)
                 .commit();
+
+        drinks = new ArrayList<>();
     }
 
-// from BACCalculatorFragment
     @Override
-    public void resetButtonClicked() {
+    public void bacCalculatorButtonResetClicked() {
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
 
         if (fragment != null) {
             profile = null;
-            drinkArrayList.clear();
+            drinks.clear();
             fragment.resetCalculator();
         }
     }
 
     @Override
-    public void setButtonClicked() {
+    public void bacCalculatorButtonSetClicked() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerView, new SetProfileFragment(), "set profile")
                 .addToBackStack("set profile")
@@ -53,38 +53,51 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     }
 
     @Override
-    public void addDrinkButtonClicked() {
+    public void bacCalculatorButtonAddDrinkClicked() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containerView, new AddDrinkFragment(), "add drink")
+                .addToBackStack("add drink")
+                .commit();
+    }
+
+    @Override
+    public void bacCalculatorButtonViewDrinksClicked() {
 
     }
 
     @Override
-    public void viewDrinksButtonClicked() {
+    public void addDrinkButtonSetClicked(Drink drink) {
+        BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
 
+        getSupportFragmentManager()
+                .popBackStack("add drink", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        if (fragment != null) {
+            drinks.add(drink);
+            fragment.updateDrinks(drinks, profile);
+        }
     }
 
-// from SetProfileFragment
+    @Override
+    public void addDrinkButtonCancelClicked() {
+        getSupportFragmentManager().popBackStack();
+    }
 
     @Override
-    public void cancelButtonClicked() {
+    public void setProfileButtonCancelClicked() {
         getSupportFragmentManager().popBackStack();
     }
 
     @Override
     public void profileSet(Profile profile) {
-        /* This is returning null... */
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
 
         getSupportFragmentManager()
                 .popBackStack("set profile", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         if (fragment != null) {
+            this.profile = profile;
             fragment.setWeight(profile);
         }
     }
-
-// from AddDrinkFragment
-
-
-// from ViewDrinksFragment
-
 }

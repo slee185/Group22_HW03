@@ -22,9 +22,9 @@
     <string name="drink_size_option2_label">5 oz</string>
     <string name="drink_size_option3_label">12 oz</string>
 
-    <string name="previous_button_description">Previous Button</string>
-    <string name="next_button_description">Next Button</string>
-    <string name="trash_button_description">Trash Button</string>
+    <string name="previous_button_description">Previous</string>
+    <string name="next_button_description">Next</string>
+    <string name="trash_button_description">Trash</string>
 
     <string name="alcohol_percent_label">Alcohol %:</string>
     <string name="alcohol_percent_view">%1$d%%</string>

@@ -11,6 +11,10 @@ import android.os.Parcelable;
 import java.util.Calendar;
 
 public class Drink implements Parcelable {
+    public static final double SIZE_SMALL = 1.0;
+    public static final double SIZE_MEDIUM = 5.0;
+    public static final double SIZE_LARGE = 12.0;
+
     public final double drinkSize;
     public final double drinkAlcoholPercent;
     public final long dateTime;

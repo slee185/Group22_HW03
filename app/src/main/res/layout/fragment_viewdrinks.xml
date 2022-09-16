@@ -7,45 +7,46 @@
     tools:context=".fragments.ViewDrinksFragment">
 
     <ImageButton
-        android:id="@+id/buttonTrash"
+        android:id="@+id/viewDrinksButtonTrash"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:contentDescription="@string/trash_button_description"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
-        app:layout_constraintStart_toEndOf="@+id/buttonPrevious"
+        app:layout_constraintEnd_toStartOf="@+id/viewDrinksButtonNext"
+        app:layout_constraintStart_toEndOf="@+id/viewDrinksButtonPrevious"
         app:layout_constraintTop_toBottomOf="@+id/viewDateAdded"
         app:layout_constraintVertical_bias="0.166"
-        app:srcCompat="@mipmap/ic_trash_foreground" />
+        app:srcCompat="@mipmap/ic_trash_foreground"
+        tools:ignore="RedundantDescriptionCheck" />
 
     <Button
-        android:id="@+id/buttonClose"
+        android:id="@+id/viewDrinksButtonClose"
         android:layout_width="153dp"
         android:layout_height="65dp"
         android:layout_marginTop="16dp"
         android:text="@string/close_button_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTrash" />
+        app:layout_constraintTop_toBottomOf="@+id/viewDrinksButtonTrash" />
 
     <ImageButton
-        android:id="@+id/buttonPrevious"
+        android:id="@+id/viewDrinksButtonPrevious"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="16dp"
         android:contentDescription="@string/previous_button_description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonTrash"
+        app:layout_constraintTop_toTopOf="@+id/viewDrinksButtonTrash"
         app:srcCompat="@mipmap/ic_previous_foreground" />
 
     <ImageButton
-        android:id="@+id/buttonNext"
+        android:id="@+id/viewDrinksButtonNext"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/next_button_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonTrash"
+        app:layout_constraintTop_toTopOf="@+id/viewDrinksButtonTrash"
         app:srcCompat="@mipmap/ic_next_foreground" />
 
     <TextView

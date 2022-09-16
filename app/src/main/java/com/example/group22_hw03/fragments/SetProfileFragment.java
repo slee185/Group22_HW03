@@ -27,9 +27,6 @@ public class SetProfileFragment extends Fragment {
     EditText weightWidget;
     RadioGroup genderGroup;
 
-    public SetProfileFragment() {
-  }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +41,12 @@ public class SetProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        weightWidget = view.findViewById(R.id.weightWidget);
-        genderGroup = view.findViewById(R.id.genderGroup);
+        weightWidget = view.findViewById(R.id.setProfileWeightWidget);
+        genderGroup = view.findViewById(R.id.setProfileGenderGroup);
 
-        view.findViewById(R.id.buttonCancel).setOnClickListener(v -> listener.cancelButtonClicked());
+        view.findViewById(R.id.setProfileButtonCancel).setOnClickListener(v -> listener.setProfileButtonCancelClicked());
 
-        view.findViewById(R.id.buttonWeightSet).setOnClickListener(v -> {
+        view.findViewById(R.id.setProfileButtonSet).setOnClickListener(v -> {
             if (!validateWeight()) {
                 Toast.makeText(getActivity(), getString(R.string.validation_weight), Toast.LENGTH_SHORT).show();
                 return;
@@ -68,9 +65,9 @@ public class SetProfileFragment extends Fragment {
             int genderChoice = genderGroup.getCheckedRadioButtonId();
 
             // select gender
-            if (genderChoice == R.id.genderFemale) {
+            if (genderChoice == R.id.setProfileGenderFemale) {
                 gender = getString(R.string.gender_group_female);
-            } else if (genderChoice == R.id.genderMale) {
+            } else if (genderChoice == R.id.setProfileGenderMale) {
                 gender = getString(R.string.gender_group_male);
             } else {
                 throw new IllegalStateException(getString(R.string.exception_illegal_state_gender));
@@ -103,8 +100,8 @@ public class SetProfileFragment extends Fragment {
     @SuppressLint("NonConstantResourceId")
     private boolean validateGender() {
         switch (genderGroup.getCheckedRadioButtonId()) {
-            case R.id.genderFemale:
-            case R.id.genderMale:
+            case R.id.setProfileGenderFemale:
+            case R.id.setProfileGenderMale:
                 return true;
             default:
                 return false;
@@ -131,7 +128,7 @@ public class SetProfileFragment extends Fragment {
     iListener listener;
 
     public interface iListener {
-        void cancelButtonClicked();
+        void setProfileButtonCancelClicked();
 
         void profileSet(Profile profile);
     }
