@@ -44,7 +44,7 @@ public class SetProfileFragment extends Fragment {
         weightWidget = view.findViewById(R.id.setProfileWeightWidget);
         genderGroup = view.findViewById(R.id.setProfileGenderGroup);
 
-        view.findViewById(R.id.setProfileButtonCancel).setOnClickListener(v -> listener.cancelButtonClicked());
+        view.findViewById(R.id.setProfileButtonCancel).setOnClickListener(v -> listener.setProfileButtonCancelClicked());
 
         view.findViewById(R.id.setProfileButtonSet).setOnClickListener(v -> {
             if (!validateWeight()) {
@@ -128,7 +128,7 @@ public class SetProfileFragment extends Fragment {
     iListener listener;
 
     public interface iListener {
-        void cancelButtonClicked();
+        void setProfileButtonCancelClicked();
 
         void profileSet(Profile profile);
     }

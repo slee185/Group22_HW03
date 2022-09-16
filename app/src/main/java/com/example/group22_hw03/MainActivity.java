@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 // from SetProfileFragment
 
     @Override
-    public void cancelButtonClicked() {
+    public void setProfileButtonCancelClicked() {
         getSupportFragmentManager().popBackStack();
     }
 
