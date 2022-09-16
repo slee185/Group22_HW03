@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
                 .popBackStack("set profile", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         if (fragment != null) {
+            this.profile = profile;
             fragment.setWeight(profile);
         }
     }
