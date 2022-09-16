@@ -38,6 +38,7 @@ public class AddDrinkFragment extends Fragment {
         SeekBar addDrinkAlcoholPercentBar = view.findViewById(R.id.addDrinkAlcoholPercentBar);
 
         view.findViewById(R.id.addDrinkButtonCancel).setOnClickListener(v -> listener.addDrinkButtonCancelClicked());
+
         view.findViewById(R.id.addDrinkButtonSet).setOnClickListener(v -> {
             double size;
 
