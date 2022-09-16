@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.containerView, new BACCalculatorFragment(), "calculator")
-                .addToBackStack(null)
                 .commit();
     }
 
