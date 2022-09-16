@@ -17,8 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.group22_hw03.Drink;
 import com.example.group22_hw03.Profile;
 import com.example.group22_hw03.R;
+
+import java.util.ArrayList;
 
 public class BACCalculatorFragment extends Fragment {
     private TextView bacLevelView;
@@ -30,6 +33,7 @@ public class BACCalculatorFragment extends Fragment {
     private Button buttonSetWeight;
     private Button buttonReset;
 
+    ArrayList<Drink> drinks = new ArrayList<>();
     Profile profile;
 
     @Override
@@ -60,7 +64,19 @@ public class BACCalculatorFragment extends Fragment {
         buttonReset.setOnClickListener(v -> listener.bacCalculatorButtonResetClicked());
         buttonSetWeight.setOnClickListener(v -> listener.bacCalculatorButtonSetClicked());
 
-        buttonReset.performClick();
+        double bac = 0.0;
+        double totalLiquidOunces = 0.0;
+
+        for (Drink drink : drinks) {
+            totalLiquidOunces += drink.drinkSize * drink.drinkAlcoholPercent / 100;
+        }
+
+        if (profile != null) {
+            bac = (totalLiquidOunces * 5.14 / (profile.weight * profile.getGenderConstant(this)));
+        }
+
+        numDrinksView.setText(getString(R.string.num_drinks_view, drinks.size()));
+        bacLevelView.setText(getString(R.string.bac_level_view, bac));
     }
 
     @Override
