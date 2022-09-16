@@ -49,18 +49,18 @@ public class BACCalculatorFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         bacLevelView = view.findViewById(R.id.bacCalculatorBacLevelView);
-        numDrinksView = view.findViewById(R.id.bacCalculatorNumDrinksView);
-        statusView = view.findViewById(R.id.bacCalculatorStatusView);
         buttonDrinkAdd = view.findViewById(R.id.bacCalculatorButtonAddDrink);
         buttonDrinkView = view.findViewById(R.id.bacCalculatorButtonViewDrinks);
-        buttonSetWeight = view.findViewById(R.id.bacCalculatorButtonSet);
         buttonReset = view.findViewById(R.id.bacCalculatorButtonReset);
+        buttonSetWeight = view.findViewById(R.id.bacCalculatorButtonSet);
+        numDrinksView = view.findViewById(R.id.bacCalculatorNumDrinksView);
+        statusView = view.findViewById(R.id.bacCalculatorStatusView);
         weightView = view.findViewById(R.id.bacCalculatorWeightView);
 
-        buttonReset.setOnClickListener(v -> listener.resetButtonClicked());
-        buttonSetWeight.setOnClickListener(v -> listener.setButtonClicked());
-        buttonDrinkAdd.setOnClickListener(v -> listener.addDrinkButtonClicked());
-        buttonDrinkView.setOnClickListener(v -> listener.viewDrinksButtonClicked());
+        buttonDrinkAdd.setOnClickListener(v -> listener.bacCalculatorButtonAddDrinkClicked());
+        buttonDrinkView.setOnClickListener(v -> listener.bacCalculatorButtonViewDrinksClicked());
+        buttonReset.setOnClickListener(v -> listener.bacCalculatorButtonResetClicked());
+        buttonSetWeight.setOnClickListener(v -> listener.bacCalculatorButtonSetClicked());
 
         buttonReset.performClick();
     }
