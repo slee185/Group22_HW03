@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     }
 
     public void addDrinkButtonCancelClicked() {
+        getSupportFragmentManager().popBackStack();
     }
 
     @Override
