@@ -20,7 +20,11 @@ import androidx.fragment.app.Fragment;
 import com.example.group22_hw03.Drink;
 import com.example.group22_hw03.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class ViewDrinksFragment extends Fragment {
 
@@ -58,8 +62,6 @@ public class ViewDrinksFragment extends Fragment {
         viewDrinksButtonPrevious = view.findViewById(R.id.viewDrinksButtonPrevious);
         viewDrinksButtonNext = view.findViewById(R.id.viewDrinksButtonNext);
 
-        // ArrayList<Drink> drinks =
-
         view.findViewById(R.id.viewDrinksButtonTrash).setOnClickListener(v -> listener.viewDrinksButtonTrashClicked());
 
         view.findViewById(R.id.viewDrinksButtonClose).setOnClickListener(v -> listener.viewDrinksButtonCloseClicked());
@@ -78,6 +80,51 @@ public class ViewDrinksFragment extends Fragment {
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
         }
+    }
+
+    public ArrayList<Drink> updateDrinkList(ArrayList<Drink> drinks) {
+        return drinks;
+    }
+
+    public void updateView(ArrayList<Drink> drinks) {
+        Drink currentDrink = drinks.get(currentDrinkNumber);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a", Locale.US);
+
+        Date drinkDate = Calendar.getInstance().getTime();
+        drinkDate.setTime(currentDrink.dateTime);
+
+        viewCurrentDrinkNumber.setText(getString(R.string.view_current_drink_number, currentDrinkNumber + 1, drinks.size()));
+        viewAlcoholPercent.setText(getString(R.string.view_alcohol_percent, currentDrink.drinkAlcoholPercent));
+        viewDrinkSize.setText(getString(R.string.view_drink_size, currentDrink.drinkSize));
+        viewDateAdded.setText(R.string.view_date_added + dateFormat.format(drinkDate));
+    }
+
+    public void previousDrink(ArrayList<Drink> drinks) {
+        currentDrinkNumber--;
+        if(currentDrinkNumber < 0) {
+            currentDrinkNumber = drinks.size() - 1;
+        }
+
+        updateView(drinks);
+    }
+
+    public void nextDrink(ArrayList<Drink> drinks) {
+        currentDrinkNumber++;
+        if (currentDrinkNumber >= drinks.size()) {
+            currentDrinkNumber = 0;
+        }
+
+        updateView(drinks);
+    }
+
+    public void trashDrink(ArrayList<Drink> drinks) {
+        drinks.remove(currentDrinkNumber);
+
+        if (drinks.isEmpty()) {
+            viewDrinksButtonClose.performClick();
+            return;
+        }
+        viewDrinksButtonPrevious.performClick();
     }
 
     iListener listener;

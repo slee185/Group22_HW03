@@ -70,7 +70,13 @@ public class BACCalculatorFragment extends Fragment {
         buttonDrinkAdd.setEnabled(false);
 
         buttonDrinkAdd.setOnClickListener(v -> listener.bacCalculatorButtonAddDrinkClicked());
-        buttonDrinkView.setOnClickListener(v -> listener.bacCalculatorButtonViewDrinksClicked(drinks));
+        buttonDrinkView.setOnClickListener(v -> {
+            if (drinks.isEmpty()) {
+                Toast.makeText(getActivity(), R.string.validation_drink_list_empty, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            listener.bacCalculatorButtonViewDrinksClicked(drinks);
+        });
         buttonReset.setOnClickListener(v -> listener.bacCalculatorButtonResetClicked());
         buttonSetWeight.setOnClickListener(v -> listener.bacCalculatorButtonSetClicked());
 

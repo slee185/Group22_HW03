@@ -15,7 +15,6 @@ import com.example.group22_hw03.fragments.BACCalculatorFragment;
 import com.example.group22_hw03.fragments.SetProfileFragment;
 import com.example.group22_hw03.fragments.ViewDrinksFragment;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements BACCalculatorFragment.iListener, AddDrinkFragment.iListener, SetProfileFragment.iListener, ViewDrinksFragment.iListener {
@@ -63,10 +62,16 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     @Override
     public void bacCalculatorButtonViewDrinksClicked(ArrayList<Drink> drinks) {
+        ViewDrinksFragment fragment = (ViewDrinksFragment)getSupportFragmentManager().findFragmentByTag("view drinks");
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerView, new ViewDrinksFragment(), "view drinks")
-                .addToBackStack(null)
+                .addToBackStack("view drinks")
                 .commit();
+
+        if (fragment != null) {
+            fragment.updateView(drinks);
+        }
     }
 
     @Override
@@ -107,21 +112,40 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
     @Override
     public void viewDrinksButtonTrashClicked() {
+        ViewDrinksFragment fragment = (ViewDrinksFragment)getSupportFragmentManager().findFragmentByTag("view drinks");
 
+        if (fragment != null) {
+            fragment.trashDrink(drinks);
+        }
     }
 
     @Override
     public void viewDrinksButtonCloseClicked() {
+        ViewDrinksFragment fragment = (ViewDrinksFragment)getSupportFragmentManager().findFragmentByTag("view drinks");
 
+        getSupportFragmentManager()
+                .popBackStack("view drinks", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        if (fragment != null) {
+            fragment.updateDrinkList(drinks);
+        }
     }
 
     @Override
     public void viewDrinksButtonPreviousClicked() {
+        ViewDrinksFragment fragment = (ViewDrinksFragment) getSupportFragmentManager().findFragmentByTag("view drinks");
 
+        if (fragment != null) {
+            fragment.previousDrink(drinks);
+        }
     }
 
     @Override
     public void viewDrinksButtonNextClicked() {
+        ViewDrinksFragment fragment = (ViewDrinksFragment) getSupportFragmentManager().findFragmentByTag("view drinks");
 
+        if (fragment != null) {
+            fragment.nextDrink(drinks);
+        }
     }
 }
