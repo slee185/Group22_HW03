@@ -96,7 +96,7 @@ public class ViewDrinksFragment extends Fragment {
         viewCurrentDrinkNumber.setText(getString(R.string.view_current_drink_number, currentDrinkNumber + 1, drinks.size()));
         viewAlcoholPercent.setText(getString(R.string.view_alcohol_percent, currentDrink.drinkAlcoholPercent));
         viewDrinkSize.setText(getString(R.string.view_drink_size, currentDrink.drinkSize));
-        viewDateAdded.setText(R.string.view_date_added + dateFormat.format(drinkDate));
+        viewDateAdded.setText(getString(R.string.view_date_added, dateFormat.format(drinkDate)));
     }
 
     public void previousDrink(ArrayList<Drink> drinks) {
