@@ -38,6 +38,11 @@ public class ViewDrinksFragment extends Fragment {
     ImageButton viewDrinksButtonNext;
 
     int currentDrinkNumber = 0;
+    ArrayList<Drink> drinks;
+
+    public ViewDrinksFragment(ArrayList<Drink> drinks) {
+        this.drinks = drinks;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,13 +67,15 @@ public class ViewDrinksFragment extends Fragment {
         viewDrinksButtonPrevious = view.findViewById(R.id.viewDrinksButtonPrevious);
         viewDrinksButtonNext = view.findViewById(R.id.viewDrinksButtonNext);
 
-        view.findViewById(R.id.viewDrinksButtonTrash).setOnClickListener(v -> listener.viewDrinksButtonTrashClicked());
+        view.findViewById(R.id.viewDrinksButtonTrash).setOnClickListener(v -> trashDrink(drinks));
 
         view.findViewById(R.id.viewDrinksButtonClose).setOnClickListener(v -> listener.viewDrinksButtonCloseClicked());
 
-        view.findViewById(R.id.viewDrinksButtonPrevious).setOnClickListener(v -> listener.viewDrinksButtonPreviousClicked());
+        view.findViewById(R.id.viewDrinksButtonPrevious).setOnClickListener(v -> previousDrink(drinks));
 
-        view.findViewById(R.id.viewDrinksButtonNext).setOnClickListener(v -> listener.viewDrinksButtonNextClicked());
+        view.findViewById(R.id.viewDrinksButtonNext).setOnClickListener(v -> nextDrink(drinks));
+
+        updateView(drinks);
     }
 
     @Override
@@ -80,10 +87,6 @@ public class ViewDrinksFragment extends Fragment {
         } else {
             throw new RuntimeException(context + getString(R.string.listener_throw_message));
         }
-    }
-
-    public ArrayList<Drink> updateDrinkList(ArrayList<Drink> drinks) {
-        return drinks;
     }
 
     public void updateView(ArrayList<Drink> drinks) {
@@ -129,13 +132,7 @@ public class ViewDrinksFragment extends Fragment {
 
     iListener listener;
 
-    public interface iListener{
-        void viewDrinksButtonTrashClicked();
-
+    public interface iListener {
         void viewDrinksButtonCloseClicked();
-
-        void viewDrinksButtonPreviousClicked();
-
-        void viewDrinksButtonNextClicked();
     }
 }
