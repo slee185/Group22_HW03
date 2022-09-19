@@ -157,10 +157,6 @@ public class BACCalculatorFragment extends Fragment {
         buttonDrinkView.setEnabled(false);
     }
 
-    public void setWeight(Profile profile) {
-        this.profile = profile;
-    }
-
     public void updateDrinks(ArrayList<Drink> drinks, Profile profile) {
         this.drinks = drinks;
         this.profile = profile;

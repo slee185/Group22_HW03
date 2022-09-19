@@ -100,7 +100,9 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
 
         if (fragment != null) {
             this.profile = profile;
-            fragment.setWeight(profile);
+            drinks.clear();
+
+            fragment.updateDrinks(drinks, profile);
         }
     }
 
