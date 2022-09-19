@@ -107,8 +107,15 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     }
 
     @Override
-    public void viewDrinksButtonCloseClicked() {
+    public void viewDrinksButtonCloseClicked(ArrayList<Drink> drinks) {
+        BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
+
         getSupportFragmentManager()
                 .popBackStack("view drinks", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        if (fragment != null) {
+            this.drinks = drinks;
+            fragment.updateDrinks(drinks, profile);
+        }
     }
 }

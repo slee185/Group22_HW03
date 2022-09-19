@@ -69,7 +69,7 @@ public class ViewDrinksFragment extends Fragment {
 
         view.findViewById(R.id.viewDrinksButtonTrash).setOnClickListener(v -> trashDrink(drinks));
 
-        view.findViewById(R.id.viewDrinksButtonClose).setOnClickListener(v -> listener.viewDrinksButtonCloseClicked());
+        view.findViewById(R.id.viewDrinksButtonClose).setOnClickListener(v -> listener.viewDrinksButtonCloseClicked(drinks));
 
         view.findViewById(R.id.viewDrinksButtonPrevious).setOnClickListener(v -> previousDrink(drinks));
 
@@ -133,6 +133,6 @@ public class ViewDrinksFragment extends Fragment {
     iListener listener;
 
     public interface iListener {
-        void viewDrinksButtonCloseClicked();
+        void viewDrinksButtonCloseClicked(ArrayList<Drink> drinks);
     }
 }
