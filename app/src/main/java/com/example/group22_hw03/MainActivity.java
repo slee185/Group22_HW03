@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements BACCalculatorFrag
     public void addDrinkButtonSetClicked(Drink drink) {
         BACCalculatorFragment fragment = (BACCalculatorFragment)getSupportFragmentManager().findFragmentByTag("calculator");
 
-        getSupportFragmentManager()                .popBackStack("add drink", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        getSupportFragmentManager()
+                .popBackStack("add drink", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         if (fragment != null) {
             drinks.add(drink);
