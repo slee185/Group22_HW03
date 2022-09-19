@@ -36,6 +36,7 @@ public class AddDrinkFragment extends Fragment {
 
         RadioGroup addDrinkSizeGroup = view.findViewById(R.id.addDrinkSizeGroup);
         SeekBar addDrinkAlcoholPercentBar = view.findViewById(R.id.addDrinkAlcoholPercentBar);
+        addDrinkAlcoholPercentBar.setMax(30);
 
         view.findViewById(R.id.addDrinkButtonCancel).setOnClickListener(v -> listener.addDrinkButtonCancelClicked());
 
