@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -36,6 +37,26 @@ public class AddDrinkFragment extends Fragment {
 
         RadioGroup addDrinkSizeGroup = view.findViewById(R.id.addDrinkSizeGroup);
         SeekBar addDrinkAlcoholPercentBar = view.findViewById(R.id.addDrinkAlcoholPercentBar);
+        TextView addDrinkAlcoholPercentView = view.findViewById(R.id.addDrinkAlcoholPercentView);
+        addDrinkAlcoholPercentBar.setMax(30);
+        addDrinkAlcoholPercentView.setText(getString(R.string.alcohol_percent_view, 0));
+
+        addDrinkAlcoholPercentBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                addDrinkAlcoholPercentView.setText(getString(R.string.alcohol_percent_view, progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         view.findViewById(R.id.addDrinkButtonCancel).setOnClickListener(v -> listener.addDrinkButtonCancelClicked());
 
